@@ -1,0 +1,143 @@
+databaseChangeLog:
+  - changeSet:
+      id: schema-recipe-table-0.0.1
+      author: vendor_team
+      changes:
+        - createTable:
+            tableName: recipe
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: Text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: bigint UNSIGNED
+                  constraints:
+                    nullable: false
+              - column:
+                  name: serving_size
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: code
+                  type: varchar(8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: idea_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: recipe_status_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currency_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: recipe
+            columnNames: code
+            constraintName: recipe_reference_UNIQUE
+        - addForeignKeyConstraint:
+            baseTableName: recipe
+            baseColumnNames: idea_id
+            referencedTableName: idea
+            referencedColumnNames: id
+            constraintName: idea_id_fk
+        - addForeignKeyConstraint:
+            baseTableName: recipe
+            baseColumnNames: recipe_status_id
+            referencedTableName: recipe_status
+            referencedColumnNames: id
+            constraintName: recipe_status_id_fk
+        - addForeignKeyConstraint:
+            baseTableName: recipe
+            baseColumnNames: user_id
+            referencedTableName: user
+            referencedColumnNames: id
+            constraintName: fk_user_id
+        - addForeignKeyConstraint:
+            baseTableName: recipe
+            baseColumnNames: currency_id
+            referencedTableName: currency
+            referencedColumnNames: id
+            constraintName: currency_id_fkk
+
+
+  - changeSet:
+      id: schema-recipe-data-0.0.1
+      author: vendor_team
+      changes:
+        - insert:
+            tableName: recipe
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: "Spaghetti Bolognese"
+              - column:
+                  name: description
+                  value: "A classic Italian pasta dish with a rich and savory meat sauce."
+              - column:
+                  name: price
+                  value: 1500
+              - column:
+                  name: serving_size
+                  value: 4
+              - column:
+                  name: created_at
+                  value: '2024-08-23T12:00:00'
+              - column:
+                  name: updated_at
+                  value: '2024-08-23T12:00:00'
+              - column:
+                  name: code
+                  value: "SPAGBOL1"
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: idea_id
+                  value: 1
+              - column:
+                  name: recipe_status_id
+                  value: 1
+              - column:
+                  name: currency_id
+                  value: 1

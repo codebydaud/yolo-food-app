@@ -1,0 +1,84 @@
+databaseChangeLog:
+  - changeSet:
+      id: schema-recipe_status-table-0.0.1
+      author: vendor_team
+      changes:
+        - createTable:
+            tableName: recipe_status
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: code
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: value
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_active
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: schema-recipe_status-data-0.0.1
+      author: vendor_team
+      changes:
+        - insert:
+            tableName: recipe_status
+            columns:
+              - column:
+                  name: code
+                  value: DRAFT
+              - column:
+                  name: value
+                  value: Draft
+              - column:
+                  name: is_active
+                  value: 1
+              - column:
+                  name: created_at
+                  value: '2000-01-01T12:00:00'
+              - column:
+                  name: updated_at
+                  value: '2000-01-01T12:00:00'
+  - changeSet:
+      id: schema-recipe_status-data-0.0.2
+      author: vendor_team
+      changes:
+        - insert:
+            tableName: recipe_status
+            columns:
+              - column:
+                  name: code
+                  value: SUBMITTED
+              - column:
+                  name: value
+                  value: Submitted
+              - column:
+                  name: is_active
+                  value: 1
+              - column:
+                  name: created_at
+                  value: '2000-01-01T12:00:00'
+              - column:
+                  name: updated_at
+                  value: '2000-01-01T12:00:00'
