@@ -1,11 +1,14 @@
 package com.yolo.chef.recipe;
 
+import com.yolo.chef.exception.RecipeNotFoundException;
 import com.yolo.chef.idea.IdeaService;
 import com.yolo.chef.recipeImage.RecipeImageService;
 import com.yolo.chef.recipeStatus.RecipeStatusService;
+import com.yolo.chef.util.ApiMessages;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -22,7 +25,14 @@ public class RecipeService {
     }
      public RecipeDetailsResponseWrapper getRecipeDetailsByRecipeId(Integer recipeId)
      {
-         Recipe recipe = recipeRepository.findByUserIdAndId(1, recipeId);
-         return new RecipeDetailsResponseWrapper(recipe, ideaService, recipeImageService, recipeStatusService);
+         Optional<Recipe> recipe = recipeRepository.findByUserIdAndId(1, recipeId);
+         if(recipe.isPresent())
+         {
+             return new RecipeDetailsResponseWrapper(recipe.get(), ideaService, recipeImageService, recipeStatusService);
+         }
+         else {
+             throw new RecipeNotFoundException(ApiMessages.RECIPE_NOT_FOUND.getMessage(),"The Recipe Against Recipe Id : " + recipeId +" Not Found" );
+         }
+
      }
 }
