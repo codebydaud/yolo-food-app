@@ -40,27 +40,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
-//    @ExceptionHandler(EmailAlreadyExistsException.class)
-//    public ResponseEntity<ErrorResponse> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
-//
-//        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
-//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-//    }
-//
-//    @ExceptionHandler(UsernameAlreadyExistsException.class)
-//    public ResponseEntity<ErrorResponse> handleUsernameAlreadyExistsException(UsernameAlreadyExistsException ex) {
-//
-//        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
-//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
-//    }
-
     @ExceptionHandler(UserInvalidException.class)
     public ResponseEntity<ErrorResponse> handleUserInvalidException(UserInvalidException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
-
+    @ExceptionHandler(RecipeStatusInvalidException.class)
+    public ResponseEntity<ErrorResponse> handleRecipeStatusInvalidException(RecipeStatusInvalidException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
 
 
 }

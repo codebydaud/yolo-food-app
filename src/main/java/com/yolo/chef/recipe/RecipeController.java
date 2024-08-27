@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1")
 public class RecipeController {
@@ -28,15 +30,16 @@ public class RecipeController {
 
     @GetMapping("/recipes/{recipe_id}")
     public ResponseEntity<RecipeDetailsResponseWrapper> getRecipeDetailsByRecipeId(@PathVariable("recipe_id") Integer recipeId) {
+
         RecipeDetailsResponseWrapper recipeDetails = recipeService.getRecipeDetailsByRecipeId(recipeId);
         return ResponseEntity.ok(recipeDetails);
     }
 
-//    @PatchMapping("/recipes/{recipe_id}")
-//    public ResponseEntity<String> updateRecipeStatus(@PathVariable("recipe_id") Integer recipeId) {
-//
-//        RecipeListResponse recipeListResponse = recipeService.getAllRecipesByChef(ideaId, status, sortOrder);
-//        return ResponseEntity.ok(recipeListResponse);
-//    }
+    @PatchMapping("/recipes/{recipe_id}")
+    public ResponseEntity<Map<String, String>> updateRecipeStatus(@PathVariable("recipe_id") Integer recipeId, @RequestBody Map<String, String> requestBody ) throws Exception {
+        String status = requestBody.get("status");
+        return recipeService.updateRecipeStatus(recipeId, status);
+    }
+
 
 }
