@@ -17,6 +17,12 @@ public class RecipeStatusService {
         {
             return recipeStatus.get().getValue();
         }
-        return "Recipe Status Not Found";
+        return "Unknown";
+    }
+
+    public Integer findStatusIdByName(String status) {
+        return recipeStatusRepository.findByValue(status)
+                .map(RecipeStatus::getId)
+                .orElse(null);
     }
 }

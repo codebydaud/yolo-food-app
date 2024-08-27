@@ -19,8 +19,26 @@ public class RecipeService {
     private final RecipeImageService recipeImageService;
     private final RecipeStatusService recipeStatusService;
 
-    public RecipeListResponse getAllRecipesByChef(Integer ideaId) {
-        List<Recipe> recipes = recipeRepository.findByUserIdAndIdeaId(1,ideaId);
+//    public RecipeListResponse getAllRecipesByChef(Integer ideaId) {
+//        List<Recipe> recipes = recipeRepository.findByUserIdAndIdeaId(1,ideaId);
+//        return new RecipeListResponse(recipes, ideaService, recipeImageService);
+//    }
+    public RecipeListResponse getAllRecipesByChef(Integer ideaId, String status, String sortOrder) {
+        List<Recipe> recipes;
+
+        if (status != null) {
+            Integer statusId = recipeStatusService.findStatusIdByName(status);
+            recipes = recipeRepository.findByUserIdAndIdeaIdAndRecipeStatusId(1, ideaId, statusId);
+        } else {
+            recipes = recipeRepository.findByUserIdAndIdeaId(1, ideaId);
+        }
+
+        if ("desc".equalsIgnoreCase(sortOrder)) {
+            recipes.sort((r1, r2) -> r2.getCreatedAt().compareTo(r1.getCreatedAt()));
+        } else {
+            recipes.sort((r1, r2) -> r1.getCreatedAt().compareTo(r2.getCreatedAt()));
+        }
+
         return new RecipeListResponse(recipes, ideaService, recipeImageService);
     }
      public RecipeDetailsResponseWrapper getRecipeDetailsByRecipeId(Integer recipeId)

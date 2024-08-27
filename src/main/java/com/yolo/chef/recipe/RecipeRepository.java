@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     List<Recipe> findByUserIdAndIdeaId(Integer userId, Integer ideaId);
     Optional<Recipe> findByUserIdAndId(Integer userId, Integer recipeId);
+    List<Recipe> findByUserIdAndIdeaIdAndRecipeStatusId(Integer userId, Integer ideaId, Integer status);
+
 }
