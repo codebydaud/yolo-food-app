@@ -21,7 +21,7 @@ public class RecipeStatusService {
     }
 
     public Integer findStatusIdByName(String status) {
-        return recipeStatusRepository.findByValue(status)
+        return recipeStatusRepository.findByValueAndIsActive(status,1)
                 .map(RecipeStatus::getId)
                 .orElse(null);
     }

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
+import java.util.Collections;
 import java.util.List;
 
 @NoArgsConstructor
@@ -19,6 +20,9 @@ public class RecipeListResponse {
         this.recipes = recipes.stream()
                 .map(recipe -> new RecipeResponse(recipe, ideaService, recipeImageService))
                 .toList();
+    }
+    public List<RecipeResponse> getRecipes() {
+        return Collections.unmodifiableList(recipes);
     }
 
 
@@ -47,6 +51,10 @@ public class RecipeListResponse {
             return images.stream()
                     .map(image -> new ImageResponse(image.getUrl()))
                     .toList();
+        }
+
+        public List<ImageResponse> getImages() {
+            return Collections.unmodifiableList(images);
         }
 
         @NoArgsConstructor

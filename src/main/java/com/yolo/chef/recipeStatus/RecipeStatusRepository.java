@@ -7,5 +7,5 @@ import java.util.Optional;
 
 @Repository
 public interface RecipeStatusRepository extends JpaRepository<RecipeStatus, Integer> {
-    Optional<RecipeStatus> findByValue(String name);
+    Optional<RecipeStatus> findByValueAndIsActive(String name, Integer isActive);
 }

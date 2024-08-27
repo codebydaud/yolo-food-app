@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -52,6 +53,12 @@ public class RecipeDetailsResponseWrapper {
                     .toList();
         }
 
+        public List<ImageResponse> getImages() {
+            return Collections.unmodifiableList(images);
+        }
+
+        @NoArgsConstructor
+        @Getter
         public static class ImageResponse {
             private String url;
 
