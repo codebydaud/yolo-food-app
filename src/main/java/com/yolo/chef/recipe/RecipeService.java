@@ -80,4 +80,21 @@ public class RecipeService {
          }
      }
 
+    public ResponseEntity<Map<String, String>> deleteRecipe(Integer recipeId)
+    {
+        Optional<Recipe> recipe = recipeRepository.findByUserIdAndId(1, recipeId);
+        if(recipe.isPresent())
+        {
+            Integer statusId = recipeStatusService.findStatusIdByName("Archived");
+            recipe.get().setRecipeStatusId(statusId);
+            recipeRepository.save(recipe.get());
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Recipe deleted successfully");
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        }
+        else {
+            throw new RecipeNotFoundException(ApiMessages.RECIPE_NOT_FOUND.getMessage(),"The Recipe Against Recipe Id : " + recipeId +" Not Found" );
+        }
+    }
+
 }

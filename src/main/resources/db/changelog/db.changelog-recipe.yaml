@@ -141,3 +141,42 @@ databaseChangeLog:
               - column:
                   name: currency_id
                   value: 1
+        - insert:
+            tableName: recipe
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "Chicken Biryani"
+              - column:
+                  name: description
+                  value: "A classic Sindhi Biryani with a rich and savory chilli sauce."
+              - column:
+                  name: price
+                  value: 100
+              - column:
+                  name: serving_size
+                  value: 5
+              - column:
+                  name: created_at
+                  value: '2024-08-23T12:00:00'
+              - column:
+                  name: updated_at
+                  value: '2024-08-23T12:00:00'
+              - column:
+                  name: code
+                  value: "SNDBRYNI"
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: idea_id
+                  value: 1
+              - column:
+                  name: recipe_status_id
+                  value: 1
+              - column:
+                  name: currency_id
+                  value: 1

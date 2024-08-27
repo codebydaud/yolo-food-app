@@ -2,9 +2,6 @@ package com.yolo.chef.user;
 
 
 import com.yolo.chef.dto.LoginRequest;
-import com.yolo.chef.exception.EmailAlreadyExistsException;
-import com.yolo.chef.exception.UsernameAlreadyExistsException;
-import com.yolo.chef.util.ApiMessages;
 import com.yolo.chef.util.ValidationUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

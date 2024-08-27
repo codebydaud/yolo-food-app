@@ -41,5 +41,10 @@ public class RecipeController {
         return recipeService.updateRecipeStatus(recipeId, status);
     }
 
+    @DeleteMapping("/recipes/{recipe_id}")
+    public ResponseEntity<Map<String, String>> deleteRecipe(@PathVariable("recipe_id") Integer recipeId ) throws Exception {
+        return recipeService.deleteRecipe(recipeId);
+    }
+
 
 }
