@@ -82,10 +82,11 @@ public class RecipeService {
 
     public ResponseEntity<Map<String, String>> deleteRecipe(Integer recipeId)
     {
-        Optional<Recipe> recipe = recipeRepository.findByUserIdAndId(1, recipeId);
+        Integer statusId = recipeStatusService.findStatusIdByName("Draft");
+        Optional<Recipe> recipe = recipeRepository.findByUserIdAndIdAndRecipeStatusId(1, recipeId, statusId);
         if(recipe.isPresent())
         {
-            Integer statusId = recipeStatusService.findStatusIdByName("Archived");
+            statusId = recipeStatusService.findStatusIdByName("Archived");
             recipe.get().setRecipeStatusId(statusId);
             recipeRepository.save(recipe.get());
             Map<String, String> response = new HashMap<>();

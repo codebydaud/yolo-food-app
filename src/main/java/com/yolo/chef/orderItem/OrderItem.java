@@ -20,7 +20,7 @@ public class OrderItem {
     private Long quantity;
     private Long price;
     private LocalDateTime created_at;
-    private Integer recipe_id;
-    private Integer order_id;
+    private Integer recipeId;
+    private Integer orderId;
 }
 

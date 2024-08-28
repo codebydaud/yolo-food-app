@@ -18,7 +18,7 @@ public class OrderStatus {
     private Integer id;
     private String code;
     private String value;
-    private Boolean is_active;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+    private Integer isActive;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
