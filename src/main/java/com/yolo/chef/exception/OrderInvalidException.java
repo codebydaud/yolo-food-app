@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class OrderInvalidException extends RuntimeException {
     private String details;
-    public UserInvalidException(String message, String details) {
+    public OrderInvalidException(String message, String details) {
         super(message);
         this.details=details;
     }

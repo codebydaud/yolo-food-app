@@ -43,6 +43,8 @@ public class RecipeService {
 
         return new RecipeListResponse(recipes, ideaService, recipeImageService);
     }
+
+
      public RecipeDetailsResponseWrapper getRecipeDetailsByRecipeId(Integer recipeId)
      {
          Optional<Recipe> recipe = recipeRepository.findByUserIdAndId(1, recipeId);
