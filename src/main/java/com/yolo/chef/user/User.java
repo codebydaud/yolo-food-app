@@ -1,9 +1,6 @@
 package com.yolo.chef.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +15,13 @@ public class User {
     private Integer id;
     private String username;
     private String email;
-    private Integer role_id;
-    private Boolean is_deleted;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+    @Column(name = "role_id")
+    private Integer roleId;
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }
 

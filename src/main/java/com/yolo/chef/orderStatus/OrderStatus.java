@@ -14,9 +14,13 @@ public class OrderStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String code;
-    @Column(name="\"value\"")
     private String value;
-    private Integer isActive;
+    @Column(name = "is_active")
+    private Boolean isActive;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }

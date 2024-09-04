@@ -1,6 +1,7 @@
-package com.yolo.chef.recipe;
+package com.yolo.chef.dto;
 
 import com.yolo.chef.idea.IdeaService;
+import com.yolo.chef.recipe.Recipe;
 import com.yolo.chef.recipeImage.RecipeImage;
 import com.yolo.chef.recipeImage.RecipeImageService;
 import com.yolo.chef.recipeStatus.RecipeStatusService;

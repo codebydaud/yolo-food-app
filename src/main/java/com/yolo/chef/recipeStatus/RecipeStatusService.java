@@ -13,15 +13,11 @@ public class RecipeStatusService {
     public String findStatusById(Integer recipeStatusId)
     {
         Optional <RecipeStatus> recipeStatus = recipeStatusRepository.findById(recipeStatusId);
-        if(recipeStatus.isPresent())
-        {
-            return recipeStatus.get().getValue();
-        }
-        return "Unknown";
+        return recipeStatus.map(status -> status.getValue().toLowerCase()).orElse("Unknown");
     }
 
     public Integer findStatusIdByName(String status) {
-        return recipeStatusRepository.findByValueAndIsActive(status,1)
+        return recipeStatusRepository.findByValueAndIsActive(status,true)
                 .map(RecipeStatus::getId)
                 .orElse(null);
     }

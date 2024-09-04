@@ -43,7 +43,7 @@ databaseChangeLog:
             columnNames: code
             constraintName: idea_reference_UNIQUE
   - changeSet:
-      id: schema-0.0.8.1.2
+      id: schema-dietary_restriction-data-0.0.1
       author: vendor_team
       changes:
         - insert:
@@ -54,16 +54,16 @@ databaseChangeLog:
                   value: 1
               - column:
                   name: customer_name
-                  value: Ahmad
+                  value: Esha
               - column:
                   name: title
-                  value: Chinese Rice
+                  value: ChineseRiceTitle
               - column:
                   name: description
-                  value: Chinese Rice Idea Description
+                  value: ChineseRiceIdea Description
               - column:
                   name: code
-                  value: 123
+                  value: IDE12345
               - column:
                   name: created_at
                   value: '2000-01-01T12:00:00'

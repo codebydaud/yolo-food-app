@@ -71,37 +71,3 @@ databaseChangeLog:
             referencedTableName: currency
             referencedColumnNames: id
             constraintName: currency_id_fk
-  - changeSet:
-      id: schema-userprofile-data-0.0.1
-      author: vendor_team
-      changes:
-        - insert:
-            tableName: user_profile
-            columns:
-              - column:
-                  name: id
-                  value: 1
-              - column:
-                  name: first_name
-                  value: "Daud"
-              - column:
-                  name: last_name
-                  value: "Rizvi"
-              - column:
-                  name: contact_number
-                  value: "+123456789012"
-              - column:
-                  name: created_at
-                  value: '2024-08-23T12:00:00'
-              - column:
-                  name: updated_at
-                  value: '2024-08-23T12:00:00'
-              - column:
-                  name: address_id
-                  value: 1
-              - column:
-                  name: user_id
-                  value: 1
-              - column:
-                  name: currency_id
-                  value: 1

@@ -40,17 +40,39 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
+
     @ExceptionHandler(UserInvalidException.class)
     public ResponseEntity<ErrorResponse> handleUserInvalidException(UserInvalidException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
+    @ExceptionHandler(InvalidJwtException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidJwtException(InvalidJwtException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+    }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @ExceptionHandler(InvalidException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidException(InvalidException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @ExceptionHandler(UserCreationException.class)
+    public ResponseEntity<ErrorResponse> handleUserCreationException(UserCreationException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+    }
     @ExceptionHandler(RecipeStatusInvalidException.class)
     public ResponseEntity<ErrorResponse> handleRecipeStatusInvalidException(RecipeStatusInvalidException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), ex.getDetails());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
-
-
 }

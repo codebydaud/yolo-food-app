@@ -1,9 +1,6 @@
 package com.yolo.chef.userProfile;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,13 +13,21 @@ public class UserProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String first_name;
-    private String last_name;
-    private String contact_number;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
-    private Integer address_id;
-    private Integer user_id;
-    private Integer currency_id;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "contact_number")
+    private String contactNumber;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+    @Column(name = "address_id")
+    private Integer addressId;
+    @Column(name = "user_id")
+    private Integer userId;
+    @Column(name = "currency_id")
+    private Integer currencyId;
 }
 

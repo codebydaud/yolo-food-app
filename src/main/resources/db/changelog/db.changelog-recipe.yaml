@@ -15,7 +15,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: name
-                  type: varchar(32)
+                  type: varchar(128)
                   constraints:
                     nullable: false
               - column:
@@ -97,86 +97,3 @@ databaseChangeLog:
             referencedColumnNames: id
             constraintName: currency_id_fkk
 
-
-  - changeSet:
-      id: schema-recipe-data-0.0.1
-      author: vendor_team
-      changes:
-        - insert:
-            tableName: recipe
-            columns:
-              - column:
-                  name: id
-                  value: 1
-              - column:
-                  name: name
-                  value: "Spaghetti Bolognese"
-              - column:
-                  name: description
-                  value: "A classic Italian pasta dish with a rich and savory meat sauce."
-              - column:
-                  name: price
-                  value: 1500
-              - column:
-                  name: serving_size
-                  value: 4
-              - column:
-                  name: created_at
-                  value: '2024-08-23T12:00:00'
-              - column:
-                  name: updated_at
-                  value: '2024-08-23T12:00:00'
-              - column:
-                  name: code
-                  value: "SPAGBOL1"
-              - column:
-                  name: user_id
-                  value: 1
-              - column:
-                  name: idea_id
-                  value: 1
-              - column:
-                  name: recipe_status_id
-                  value: 1
-              - column:
-                  name: currency_id
-                  value: 1
-        - insert:
-            tableName: recipe
-            columns:
-              - column:
-                  name: id
-                  value: 2
-              - column:
-                  name: name
-                  value: "Chicken Biryani"
-              - column:
-                  name: description
-                  value: "A classic Sindhi Biryani with a rich and savory chilli sauce."
-              - column:
-                  name: price
-                  value: 100
-              - column:
-                  name: serving_size
-                  value: 5
-              - column:
-                  name: created_at
-                  value: '2024-08-23T12:00:00'
-              - column:
-                  name: updated_at
-                  value: '2024-08-23T12:00:00'
-              - column:
-                  name: code
-                  value: "SNDBRYNI"
-              - column:
-                  name: user_id
-                  value: 1
-              - column:
-                  name: idea_id
-                  value: 1
-              - column:
-                  name: recipe_status_id
-                  value: 1
-              - column:
-                  name: currency_id
-                  value: 1

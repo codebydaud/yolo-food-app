@@ -46,20 +46,17 @@ databaseChangeLog:
             tableName: currency
             columns:
               - column:
-                  name: id
-                  value: 1
-              - column:
                   name: code
-                  value: "USD"
+                  value: USD
               - column:
                   name: name
-                  value: "US Dollar"
+                  value: United state Dollar
               - column:
                   name: symbol
-                  value: "$"
+                  value: $
               - column:
                   name: created_at
-                  value: '2024-08-23T12:00:00'
+                  value: '2000-01-01T12:00:00'
               - column:
                   name: updated_at
-                  value: '2024-08-23T12:00:00'
+                  value: '2000-01-01T12:00:00'

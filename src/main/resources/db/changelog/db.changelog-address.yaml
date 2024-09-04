@@ -53,37 +53,3 @@ databaseChangeLog:
                   type: datetime
                   constraints:
                     nullable: false
-  - changeSet:
-      id: schema-address-data-0.0.1
-      author: vendor_team
-      changes:
-        - insert:
-            tableName: address
-            columns:
-              - column:
-                  name: id
-                  value: 1
-              - column:
-                  name: house
-                  value: "123"
-              - column:
-                  name: street
-                  value: "Main St"
-              - column:
-                  name: area
-                  value: "Downtown"
-              - column:
-                  name: zip_code
-                  value: "12345"
-              - column:
-                  name: city
-                  value: "Metropolis"
-              - column:
-                  name: country
-                  value: "CountryA"
-              - column:
-                  name: created_at
-                  value: '2024-08-23T12:00:00'
-              - column:
-                  name: updated_at
-                  value: '2024-08-23T12:00:00'

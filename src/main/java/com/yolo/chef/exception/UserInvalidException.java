@@ -1,5 +1,6 @@
 package com.yolo.chef.exception;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,4 +12,5 @@ public class UserInvalidException extends RuntimeException {
         super(message);
         this.details=details;
     }
+
 }

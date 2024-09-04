@@ -1,0 +1,1311 @@
+openapi: 3.0.1
+info:
+  title: YOLO Chef API
+  description: YOLO Chef API Specification
+  version: 0.0.1
+servers:
+  - url: /
+paths:
+  /api/v1/users:
+    post:
+      tags:
+        - users
+      summary: Create a user
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+        required: true
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User created successfully
+                   
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+                
+  /api/v1/users/{username}/userProfiles:
+    post:
+      tags:
+        - users
+      summary: Create user profile
+      operationId: createUserProfile
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileRequest'
+        required: true
+      responses:
+        '201':
+          description: User profile created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User profile created successfully
+                   
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+                
+  /api/v1/jwtToken:
+    get:
+      tags:
+        - users
+      summary: Get a user access token
+      operationId: getAccessToken
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Access token retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_details:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: "John Doe"
+                      username:
+                        type: string
+                        example: "johndoe"
+                      email:
+                        type: string
+                        example: "johndoe@example.com"
+                      roles:
+                        type: array
+                        items:
+                          type: string
+                          example: "ROLE_USER"
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/users/{username}:
+    get:
+      tags:
+        - users
+      summary: Check user existence
+      operationId: checkUserExistence
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  is_user_created:
+                    type: boolean
+                    example: true
+                  is_user_profile_completed:
+                    type: boolean
+                    example: true  
+                   
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'              
+  
+   
+  
+                
+               
+  
+  
+  /api/v1/ideas:
+    
+    post:
+      tags:
+        - ideas
+      summary: Create an idea by customer
+      operationId: createIdea
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdeaRequest'
+        required: true
+      responses:
+        '201':
+          description: Idea created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Idea submitted successfully
+                   
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      tags:
+        - ideas
+      summary: Get all ideas with optional filters and sorting
+      operationId: getAllIdeas
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 0
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 1000
+        - name: sort_by
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [created_at, title]
+          description: Field by which to sort the results
+        - name: sort_order
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [asc, desc]
+          description: Sort order (ascending or descending)
+        - name: title
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter ideas by title (partial match)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                    description: Current page number
+                    example: 1
+                  page_size:
+                    type: integer
+                    description: Number of ideas per page
+                    example: 10
+                  total_items:
+                    type: integer
+                    description: Total number of ideas
+                    example: 100
+                  total_pages:
+                    type: integer
+                    description: Total number of pages
+                    example: 10
+                  ideas:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/IdeaSummary'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+            
+               
+  /api/v1/ideas/{idea_id}:
+    get:
+      tags:
+        - ideas
+      summary: Get idea detail by idea ID
+      operationId: getIdeaDetailsByIdeaId
+      parameters:
+        - name: idea_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Idea details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdeaResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Idea not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+ 
+  # /api/v1/recipes:
+  #   get:
+  #     tags:
+  #       - recipes
+  #     summary: Get all recipes by chef ID
+  #     operationId: getRecipesByChefId
+  #     parameters:
+  #       - name: page
+  #         in: query
+  #         required: false
+  #         schema:
+  #           type: integer
+  #           format: int32
+  #           default: 0
+  #       - name: size
+  #         in: query
+  #         required: false
+  #         schema:
+  #           type: integer
+  #           format: int32
+  #           default: 1000
+  #     responses:
+  #       '200':
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               properties:
+  #                 recipes:
+  #                   type: array
+  #                   items:
+  #                     $ref: '#/components/schemas/RecipeSummary'
+  #       '403':
+  #         description: Unauthorized access
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorResponse'
+  #       '500':
+  #         description: Internal server error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorResponse'
+  
+  /api/v1/content:
+    post:
+      tags:
+        - recipes
+      summary: Generate content for recipe
+      operationId: generateContentForRecipe
+      parameters:
+        - name: text
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Content for a recipe generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                      content:
+                        type: string
+                  
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+                
+          
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+ 
+  /api/v1/ideas/{idea_id}/recipes:
+    post:
+      tags:
+        - recipes
+      summary: Create a recipe based on a specific idea by the chef
+      operationId: createRecipe
+      parameters:
+        - name: idea_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: Recipe details to be created
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecipeRequest'
+        required: true
+      responses:
+        '201':
+          description: Recipe created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Recipe created successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      tags:
+        - recipes
+      summary: Get all recipes by chef for an idea
+      operationId: getRecipesForAnIdeaByChef
+      parameters:
+        - name: idea_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recipes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RecipeSummary'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+               
+    
+               
+  /api/v1/recipes/{recipe_id}:
+    get:
+      tags:
+        - recipes
+      summary: Get the recipe details by recipe ID for the chef
+      operationId: getRecipeDetails
+      parameters:
+        - name: recipe_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Recipe details fetched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipeDetailSummary'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Recipe not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+               
+    patch:
+      tags:
+        - recipes
+      summary: Update recipe status
+      operationId: updateRecipeStatus
+      parameters:
+        - name: recipe_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: The new status for the recipe.
+              required:
+                - status
+        required: true
+      responses:
+        '201':
+          description: Recipe updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Recipe status updated successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Recipe not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+       
+  /api/v1/orders:
+    post:
+      tags:
+        - orders
+      summary: Create a new order
+      operationId: createOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+        required: true
+           
+      responses:
+        '201':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Order submiited successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+               
+    get:
+      tags:
+        - orders
+      summary: Retrieve all orders by chef
+      operationId: getOrdersByChefId
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 0
+          description: The page number for pagination.
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 100
+          description: The number of orders per page for pagination.
+        - name: order_status
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter orders by status (e.g., pending, completed, cancelled).
+        - name: min_price
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+          description: Filter orders with a minimum price.
+        - name: max_price
+          in: query
+          required: false
+          schema:
+            type: number
+            format: double
+          description: Filter orders with a maximum price.
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Search orders by customer mobile number or order code.
+      responses:
+        '200':
+          description: A list of orders associated with the specified chef.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                    description: Current page number
+                    example: 1
+                  page_size:
+                    type: integer
+                    description: Number of ideas per page
+                    example: 10
+                  total_items:
+                    type: integer
+                    description: Total number of ideas
+                    example: 100
+                  total_pages:
+                    type: integer
+                    description: Total number of pages
+                    example: 10
+                  orders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OrderResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+         
+  /api/v1/orders/{order_id}:
+    get:
+      tags:
+        - orders
+      summary: Get order details by order ID for the chef
+      operationId: getOrderDetailByOrderId
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Order details fetched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDetailResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Order not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags:
+        - orders
+      summary: Update order status by order ID
+      operationId: updateOrderStatusByOrderId
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+           
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: The new status for the order.
+              required:
+                - status
+        required: true
+      responses:
+        '201':
+          description: Order updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Order status updated successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Order not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+         
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    UserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+    UserProfileRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        contact_number:
+          type: string
+        house:
+          type: string
+        street:
+          type: string
+        area:
+          type: string
+        zip_code:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        currency_code:
+          type: string
+    Ideas:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        customer_name:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    DietryRestrictions:
+      type: object
+      properties:
+        id:
+          type: integer
+        text:
+          type: string
+        idea_id:
+          type: integer
+    Interests:
+      type: object
+      properties:
+        id:
+          type: integer
+        text:
+          type: string
+        idea_id:
+          type: integer
+    IdeaSummary:
+      type: object
+      properties:
+     
+        id:
+          type: integer
+          format: int32
+        customer_name:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+          format: DATETIME
+      required:
+        - customer_name
+        - title
+        - description
+    IdeaRequest:
+      type: object
+      properties:
+        idea:
+          type: object
+          properties:
+            customer_name:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+            idea_code:
+              type: string
+            interests:
+              type: array
+              items:
+                type: string
+            dietry_restrictions:
+              type: array
+              items:
+                type: string
+      required:
+        - customer_name
+        - title
+        - idea_code
+    IdeaResponse:
+      type: object
+      properties:
+        idea:
+          type: object
+          properties:
+            customer_name:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+            created_at:
+              type: string
+              format: DATETIME
+          
+            recipe_count:
+              type: integer
+              format: int32
+
+            interests:
+              type: array
+              items:
+                type: string
+            dietry_restrictions:
+              type: array
+              items:
+                type: string
+      required:
+        - customer_name
+        - title
+        - code
+    Recipes:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        title:
+          type: string
+          maxLength: 20
+        description:
+          type: string
+          maxLength: 255
+        price:
+          type: integer
+          format: int64
+        serving_size:
+          type: integer
+        code:
+          type: string
+          maxLength: 5
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        user_id:
+          type: integer
+        idea_id:
+          type: integer
+        recipe_status_id:
+          type: integer
+      required:
+        - title
+        - description
+        - price
+        - serving_size
+        - code
+        - user_id
+        - idea_id
+        - recipe_status_id
+    RecipeRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 20
+        description:
+          type: string
+          maxLength: 255
+        price:
+          type: integer
+          format: int64
+        serving_size:
+          type: integer
+       
+        images:
+          type: array
+          items:
+            type: string
+            format: binary
+          description: "Array of image files to upload"
+                     
+      required:
+        - title
+        - description
+        - price
+        - serving_size
+    RecipeSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        recipe_name:
+          type: string
+        description:
+          type: string
+        serving_size:
+          type: integer
+        price:
+          type: integer
+          format: int64
+        idea_title:
+          type: string
+        images:
+          type: array
+          items:
+              type: object
+              properties:
+                  url:
+                    type: string
+                    example: "https://example.com/images/spaghetti-carbonara.jpg"
+      required:
+        - title
+        - description
+        - serving_size
+        - price
+        - idea_title
+        - status
+        - images
+    RecipeDetailSummary:
+      type: object
+      properties:
+        recipe:
+          type: object
+          properties:
+            recipe_name:
+              type: string
+            description:
+              type: string
+            serving_size:
+              type: integer
+            price:
+              type: integer
+              format: int64
+            idea_title:
+              type: string
+            status:
+              type: string
+            created_at:
+              type: string
+              format: DATETIME
+            images:
+              type: array
+              items:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: "https://example.com/images/spaghetti-carbonara.jpg"
+      required:
+        - title
+        - description
+        - serving_size
+        - price
+        - idea_title
+        - status
+        - images
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        price:
+          type: integer
+        code:
+          type: string
+        customer_contact_number:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        address_id:
+          type: integer
+        order_status_id:
+          type: integer
+    OrderItem:
+      type: object
+      properties:
+        id:
+          type: integer
+        quantity:
+          type: integer
+        price:
+          type: integer
+        recipe_id:
+          type: integer
+        order_id:
+          type: integer
+    OrderRequest:
+      type: object
+      properties:
+        order:
+          type: object
+          properties:
+                total_price:
+                  type: integer
+                  example: 19999
+                cuurency_code:
+                  type: string
+                order_code:
+                  type: string
+                  example: "ORD00001"
+                customer_contact_number:
+                  type: string
+                  example: "+1234567890"
+                address:
+                  type: object
+                  properties:
+                    house:
+                      type: string
+                      example: 123
+                    street:
+                      type: integer
+                      example: 456
+                    area:
+                      type: string
+                      example: "Downtown"
+                    zip_code:
+                      type: string
+                    city:
+                      type: string
+                      example: "Metropolis"
+                    country:
+                      type: string
+                      example: "US"
+                order_items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      quantity:
+                        type: integer
+                        example: 2
+                      price:
+                        type: integer
+                        example: 9999
+                      recipe_code:
+                        type: string
+      required:
+                - price
+                - code
+                - customer_contact_number
+                - address
+                - order_items
+               
+    OrderResponse:
+      type: object
+      properties:
+        order_id:
+          type: integer
+          format: int32
+        customer_name:
+          type: string
+        total_price:
+          type: integer
+        currency_code:
+          type: string
+        created_at:
+          type: string
+          format: DATETIME
+        status:
+          type: string
+    OrderDetailResponse:
+      type: object
+      properties:
+        order:
+          type: object
+          properties:
+            customer_name:
+              type: string
+            total_price:
+              type: integer
+            currency_code:
+              type: string
+            customer_contact_number:
+              type: string
+            address:
+              type: object
+              properties:
+                house:
+                  type: string
+                street:
+                  type: integer
+            area:
+              type: string
+            zip_code:
+              type: string
+            city:
+              type: string
+            country:
+              type: string
+        order_items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      recipe_name:
+                        type: string
+                     
+                      quantity:
+                        type: integer
+                       
+                      price:
+                        type: integer
+                       
+                      serving_size:
+                        type: integer
+                        format: int32
+       
+         
+           
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A brief message describing the error.
+        details:
+          type: string
+          description: Additional details about the error.

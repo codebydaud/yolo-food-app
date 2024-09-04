@@ -1,4 +1,17 @@
 spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB    # Maximum file size allowed
+      max-request-size: 10MB # Maximum request size allowed
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+#          issuer-uri: http://localhost:8083/realms/Yolo  ${JwtIssuerURI}
+#          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs ${JwtSetURI}
+           issuer-uri: ${JwtIssuerURI}
+           jwk-set-uri: ${JwtSetURI}
   application:
     name: chef
   datasource:
@@ -22,4 +35,10 @@ api:
   GeminiUrl:
     ${GeminiUrl}
 server:
-  port: 8081
+  port: 8082
+
+jwt:
+  auth:
+    converter:
+      resource-id: yolo-chef
+      principle-attribute: preferred_username
