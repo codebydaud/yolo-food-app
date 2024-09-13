@@ -4,7 +4,7 @@ YOLO is a food ordering platform designed to help customers create custom ideas 
 
 # 1. Customer App
 ## Purpose:
-The YOLO Customer App allows users to design custom recipes with the help of an AI assistant and order them. Customers can request custom recipes based on their ideas or dietary preferences.
+The YOLO Customer App allows users to design custom ideas with the help of an AI assistant and order them. Customers can request custom recipes based on their ideas or dietary preferences.
 
 ## Features
 User Registration: Allows new users to sign up for the platform. </br>
