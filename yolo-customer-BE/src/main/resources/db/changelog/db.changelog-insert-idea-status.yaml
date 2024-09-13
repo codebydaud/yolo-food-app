@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 7
+      author: valeena
+      changes:
+        - insert:
+            tableName: idea_status
+            columns:
+              - column:
+                  name: code
+                  value: DRAFT
+              - column:
+                  name: value
+                  value: Draft
+
+        - insert:
+            tableName: idea_status
+            columns:
+              - column:
+                  name: code
+                  value: SUBMITTED
+              - column:
+                  name: value
+                  value: Submitted
+
+        - insert:
+            tableName: idea_status
+            columns:
+              - column:
+                  name: code
+                  value: ARCHIVE
+              - column:
+                  name: value
+                  value: Archive

@@ -1,0 +1,118 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: valeena
+      changes:
+        - createTable:
+            tableName: order_status
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: code
+                  type: VARCHAR(16)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: value
+                  type: VARCHAR(16)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: is_active
+                  type: BOOLEAN
+                  defaultValue: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    defaultValue: CURRENT_TIMESTAMP
+                    onUpdate: CURRENT_TIMESTAMP
+
+        - createTable:
+            tableName: idea_status
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: code
+                  type: VARCHAR(16)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: value
+                  type: VARCHAR(16)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: is_active
+                  type: BOOLEAN
+                  defaultValue: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    defaultValue: CURRENT_TIMESTAMP
+                    onUpdate: CURRENT_TIMESTAMP
+
+        - createTable:
+            tableName: currency
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: code
+                  type: VARCHAR(3)
+                  constraints:
+                    unique: true
+              - column:
+                  name: name
+                  type: VARCHAR(32)
+                  constraints:
+                    unique: true
+              - column:
+                  name: symbol
+                  type: VARCHAR(3)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    defaultValue: CURRENT_TIMESTAMP
+                    onUpdate: CURRENT_TIMESTAMP

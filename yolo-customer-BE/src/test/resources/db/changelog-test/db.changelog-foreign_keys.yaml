@@ -1,0 +1,102 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: valeena
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: user_id
+            constraintName: fk_order_user_id
+            referencedTableName: user
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: order_status_id
+            constraintName: fk_order_status_id
+            referencedTableName: order_status
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: user_profile
+            baseColumnNames: address_id
+            constraintName: fk_user_address_user_id
+            referencedTableName: address
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: user_profile
+            baseColumnNames: user_id
+            constraintName: fk_profile_user_id
+            referencedTableName: user
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: idea
+            baseColumnNames: user_id
+            constraintName: fk_idea_user_id
+            referencedTableName: user
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: idea
+            baseColumnNames: idea_status_id
+            constraintName: fk_idea_status
+            referencedTableName: idea_status
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: recipe
+            baseColumnNames: idea_id
+            constraintName: fk_recipe_idea_reference
+            referencedTableName: idea
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: recipe_image
+            baseColumnNames: recipe_id
+            constraintName: fk_recipe_image_reference
+            referencedTableName: recipe
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: interest
+            baseColumnNames: idea_id
+            constraintName: fk_idea_interest_user_id
+            referencedTableName: idea
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: dietary_restriction
+            baseColumnNames: idea_id
+            constraintName: fk_idea_dietary_restriction_user_id
+            referencedTableName: idea
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: order_item
+            baseColumnNames: order_id
+            constraintName: fk_order_item_order_id
+            referencedTableName: orders
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: order_item
+            baseColumnNames: recipe_id
+            constraintName: fk_order_items_recipe_reference
+            referencedTableName: recipe
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+              baseTableName: user_profile
+              baseColumnNames: currency_id
+              constraintName: fk_user_currency_reference
+              referencedTableName: currency
+              referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+              baseTableName: recipe
+              baseColumnNames: currency_id
+              constraintName: fk_recipe_currency_reference
+              referencedTableName: currency
+              referencedColumnNames: id

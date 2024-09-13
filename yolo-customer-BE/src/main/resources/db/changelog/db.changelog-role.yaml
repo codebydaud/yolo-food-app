@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8
+      author: valeena
+      changes:
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: name
+                  value: CUSTOMER
+              - column:
+                  name: description
+                  value: sample description

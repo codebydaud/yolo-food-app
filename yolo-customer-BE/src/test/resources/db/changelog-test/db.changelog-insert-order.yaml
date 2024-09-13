@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: valeena
+      changes:
+        - insert:
+            tableName: order_status
+            columns:
+              - column:
+                  name: code
+                  value: PLACED
+              - column:
+                  name: value
+                  value: Placed
+
+        - insert:
+            tableName: order_status
+            columns:
+              - column:
+                  name: code
+                  value: PROCESSING
+              - column:
+                  name: value
+                  value: Processing
+
+        - insert:
+            tableName: order_status
+            columns:
+              - column:
+                  name: code
+                  value: DISPATCHED
+              - column:
+                  name: value
+                  value: Dispatched
+
+        - insert:
+            tableName: order_status
+            columns:
+              - column:
+                  name: code
+                  value: ARCHIVE
+              - column:
+                  name: value
+                  value: Archive
+
+        - insert:
+            tableName: currency
+            columns:
+              - column:
+                  name: code
+                  value: USD
+              - column:
+                  name: name
+                  value: US Dollar
+              - column:
+                  name: symbol
+                  value: $

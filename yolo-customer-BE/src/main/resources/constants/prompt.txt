@@ -1,0 +1,3 @@
+Generate a unique idea for the chef that includes a title and description. The title should be no more than {TITLE_LENGTH} characters, and the description should be no more than {DESCRIPTION_LENGTH} characters.
+Use the details provided below to inform your idea:
+Interests: {INTERESTS}. Restrictions: {RESTRICTIONS}.

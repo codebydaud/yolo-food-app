@@ -1,0 +1,271 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: valeena
+      changes:
+        - insert:
+            tableName: address
+            columns:
+
+              - column:
+                  name: house
+                  value: House 1
+              - column:
+                  name: street
+                  value: Street 1
+              - column:
+                  name: area
+                  value: Area 1
+              - column:
+                  name: zip_code
+                  value: 12345
+              - column:
+                  name: city
+                  value: City 1
+              - column:
+                  name: country
+                  value: Country 1
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 2
+      author: valeena
+      changes:
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: email
+                  value: john.doe@example.com
+              - column:
+                  name: is_deleted
+                  value: false
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 3
+      author: valeena
+      changes:
+        - insert:
+            tableName: user_profile
+            columns:
+              - column:
+                  name: first_name
+                  value: John
+              - column:
+                  name: last_name
+                  value: Doe
+              - column:
+                  name: contact_number
+                  value: +1234567890
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: currency_id
+                  value: 1
+              - column:
+                  name: address_id
+                  value: 1
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 4
+      author: valeena
+      changes:
+        - insert:
+            tableName: idea
+            columns:
+
+              - column:
+                  name: title
+                  value: Healthy Salad
+              - column:
+                  name: description
+                  value: A nutritious and healthy salad recipe.
+              - column:
+                  name: code
+                  value: IDEA001
+              - column:
+                  name: idea_status_id
+                  value: 1
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 5
+      author: valeena
+      changes:
+        - insert:
+            tableName: interest
+            columns:
+
+              - column:
+                  name: description
+                  value: High Protein
+              - column:
+                  name: idea_id
+                  value: 1
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 6
+      author: valeena
+      changes:
+        - insert:
+            tableName: dietary_restriction
+            columns:
+
+              - column:
+                  name: description
+                  value: Nut-Free
+              - column:
+                  name: idea_id
+                  value: 1
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 7
+      author: valeena
+      changes:
+        - insert:
+            tableName: recipe
+            columns:
+
+              - column:
+                  name: name
+                  value: Quinoa Salad
+              - column:
+                  name: description
+                  value: A healthy quinoa salad with vegetables.
+              - column:
+                  name: serving_size
+                  value: 2
+              - column:
+                  name: price
+                  value: 1500
+              - column:
+                  name: code
+                  value: REC001
+              - column:
+                  name: idea_id
+                  value: 1
+              - column:
+                  name: currency_id
+                  value: 1
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 8
+      author: valeena
+      changes:
+        - insert:
+            tableName: recipe_image
+            columns:
+              -
+              - column:
+                  name: url
+                  value: https://example.com/images/quinoa_salad.jpg
+              - column:
+                  name: recipe_id
+                  value: 1
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 9
+      author: valeena
+      changes:
+        - insert:
+            tableName: orders
+            columns:
+
+              - column:
+                  name: price
+                  value: 1000
+              - column:
+                  name: code
+                  value: ORD001
+              - column:
+                  name: order_status_id
+                  value: 1
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 10
+      author: valeena
+      changes:
+        - insert:
+            tableName: order_item
+            columns:
+
+              - column:
+                  name: quantity
+                  value: 2
+              - column:
+                  name: order_id
+                  value: 1
+              - column:
+                  name: recipe_id
+                  value: 1
+              - column:
+                  name: price
+                  value: 500
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  valueComputed: CURRENT_TIMESTAMP

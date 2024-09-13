@@ -1,0 +1,197 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: valeena
+      changes:
+        - createTable:
+            tableName: idea
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: VARCHAR(64)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: code
+                  type: VARCHAR(8)
+                  constraints:
+                    unique: true
+              - column:
+                  name: idea_status_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    defaultValue: CURRENT_TIMESTAMP
+                    onUpdate: CURRENT_TIMESTAMP
+
+        - createTable:
+            tableName: interest
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: description
+                  type: VARCHAR(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: idea_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    defaultValue: CURRENT_TIMESTAMP
+                    onUpdate: CURRENT_TIMESTAMP
+
+        - createTable:
+            tableName: dietary_restriction
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: description
+                  type: VARCHAR(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: idea_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    defaultValue: CURRENT_TIMESTAMP
+                    onUpdate: CURRENT_TIMESTAMP
+
+        - createTable:
+            tableName: recipe
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(64)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: serving_size
+                  type: INT
+              - column:
+                  name: price
+                  type: BIGINT UNSIGNED
+              - column:
+                  name: code
+                  type: VARCHAR(8)
+                  constraints:
+                    unique: true
+              - column:
+                  name: chef_code
+                  type: VARCHAR(8)
+                  constraints:
+                    unique: true
+              - column:
+                  name: chef_name
+                  type: VARCHAR(32)
+              - column:
+                  name: idea_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: currency_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    defaultValue: CURRENT_TIMESTAMP
+                    onUpdate: CURRENT_TIMESTAMP
+
+        - createTable:
+            tableName: recipe_image
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: url
+                  type: VARCHAR(128)
+              - column:
+                  name: recipe_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    defaultValue: CURRENT_TIMESTAMP
+                    onUpdate: CURRENT_TIMESTAMP
