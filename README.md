@@ -16,6 +16,7 @@ Order Recipe: Customers can order one or more selected recipes in their required
 ### Technology Stack
 #### Backend:
 Java Spring Boot (REST API).
+Spring Security for JWT-based authentication and authorization
 
 #### Frontend: 
 Vue.js
@@ -41,6 +42,7 @@ Update Order Status: Chefs can update the order status (e.g., Processing, Dispat
 ### Technology Stack
 #### Backend:
 Java Spring Boot (REST API).
+Spring Security for JWT-based authentication and authorization
 
 #### Frontend: 
 Vue.js
