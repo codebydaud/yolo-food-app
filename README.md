@@ -52,3 +52,36 @@ MySQL.
 
 #### Security: 
 OAuth 2.0 for secure API access and user authentication.
+
+## Screenshots (Customer App)
+
+### Home Screen
+
+![Home](https://github.com/user-attachments/assets/6087b42e-ade6-41cb-9132-7e251bf0a5b2)
+
+### Generate Idea Screen
+
+![Generate IDea with Data](https://github.com/user-attachments/assets/88abdcf7-da99-4ec0-9184-bc818e7977ce)
+
+### My Ideas Screen
+
+![My ideas](https://github.com/user-attachments/assets/6818d4df-4b6e-4750-b1ed-527b09ad53ce)
+
+### Recipe List Screen
+
+![Recipe page for customer](https://github.com/user-attachments/assets/d81bfc86-1c82-424e-a99f-b66053ddc464)
+
+### Recipe Detail Screen
+
+![recipe detail for customer](https://github.com/user-attachments/assets/8d8ac04c-d1b2-4fb1-8891-82989de243f2)
+
+### My Orders Screen
+
+![my orders](https://github.com/user-attachments/assets/031a261c-e08c-4541-90d8-f2e9d2038786)
+
+### Profile Screen
+
+![profile](https://github.com/user-attachments/assets/bd73cbba-67e0-4a39-87c1-ceed8b035e52)
+
+
+
