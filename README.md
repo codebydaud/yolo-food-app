@@ -23,7 +23,7 @@ Vue.js
 ### Database: 
 MySQL.
 
-## Security 
+### Security:
 OAuth 2.0 for secure API access and user authentication.
 
 # 2. Vendor App
