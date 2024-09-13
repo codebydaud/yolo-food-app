@@ -55,23 +55,7 @@ OAuth 2.0 for secure API access and user authentication.
 
 ## VIDEO DEMO
 
-
-
-https://github.com/user-attachments/assets/95b9e6f6-85fa-4404-b6a8-80998d8fd179
-
-
-
-https://github.com/user-attachments/assets/95b9e6f6-85fa-4404-b6a8-80998d8fd179
-
-
-
-https://github.com/user-attachments/assets/d1395259-a98d-4253-98ba-88ebffd9103d
-
-
-
-https://github.com/user-attachments/assets/d1395259-a98d-4253-98ba-88ebffd9103d
-
-
+https://github.com/user-attachments/assets/41c11164-2541-4974-930d-b539caa802a7
 
 ## Screenshots (Customer App)
 
