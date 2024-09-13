@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: schema-order-table-0.0.1
+      author: vendor_team
+      changes:
+        - createTable:
+            tableName: order
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: price
+                  type: bigint UNSIGNED
+                  constraints:
+                    nullable: false
+              - column:
+                  name: code
+                  type: varchar(8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: customer_contact_number
+                  type: varchar(13)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: order_status_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: order
+            columnNames: code
+            constraintName: order_reference_UNIQUE
+        - addForeignKeyConstraint:
+            baseTableName: order
+            baseColumnNames: address_id
+            referencedTableName: address
+            referencedColumnNames: id
+            constraintName: fk_address_id
+        - addForeignKeyConstraint:
+            baseTableName: order
+            baseColumnNames: order_status_id
+            referencedTableName: order_status
+            referencedColumnNames: id
+            constraintName: order_status_id_fk
+
+

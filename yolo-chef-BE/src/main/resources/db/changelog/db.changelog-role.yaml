@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: schema-role-table-0.0.1
+      author: vendor_team
+      changes:
+        - createTable:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_active
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: schema-role-data-0.0.1
+      author: vendor_team
+      changes:
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: chef
+              - column:
+                  name: description
+                  value: its a chef role
+              - column:
+                  name: is_active
+                  value: 1
+              - column:
+                  name: created_at
+                  value: '2000-01-01T12:00:00'
+              - column:
+                  name: updated_at
+                  value: '2000-01-01T12:00:00'

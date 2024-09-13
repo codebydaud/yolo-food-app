@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: schema-recipe_image-table-0.0.1
+      author: vendor_team
+      changes:
+        - createTable:
+            tableName: recipe_image
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: url
+                  type: varchar(264)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: recipe_id
+                  type: int
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: recipe_image
+            baseColumnNames: recipe_id
+            referencedTableName: recipe
+            referencedColumnNames: id
+            constraintName: recipe_id_Fk
+

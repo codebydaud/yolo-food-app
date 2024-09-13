@@ -1,0 +1,18 @@
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/Yolo_Chef
+#    username: root
+#    password: 123456
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:Yolo_Chef
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
