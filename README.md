@@ -18,14 +18,14 @@ The YOLO Customer App allows users to design custom ideas with the help of an AI
 * View Recipes: Users can view custom recipes submitted by chefs against their ideas. </br>
 * Order Recipe: Customers can order one or more selected recipes in their required quantities. </br>
 ### Technology Stack
-#### Backend:
-* Java Spring Boot (REST API). </br>
-* Spring Security for JWT-based authentication and authorization.
-
 #### Frontend: 
 * Vue.js with Tailwind CSS for responsive and modern design. </br>
 * Axios for API calls. </br>
 * Vue Router for routing.
+  
+#### Backend:
+* Java Spring Boot (REST API). </br>
+* Spring Security for JWT-based authentication and authorization.
 
 #### Database: 
 * MySQL.
@@ -46,14 +46,14 @@ The YOLO Vendor (Chef) App allows chefs to create custom recipes based on custom
 * Receive Orders: Vendors can receive and manage orders, including details like quantity and customer address. </br>
 * Update Order Status: Chefs can update the order status (e.g., Processing, Dispatched). </br>
 ### Technology Stack
-#### Backend:
-* Java Spring Boot (REST API).
-* Spring Security for JWT-based authentication and authorization.
-
 #### Frontend: 
 * Vue.js with Tailwind CSS for responsive and modern design. </br>
 * Axios for API calls. </br>
 * Vue Router for routing.
+  
+#### Backend:
+* Java Spring Boot (REST API).
+* Spring Security for JWT-based authentication and authorization.
 
 #### Database: 
 * MySQL.
