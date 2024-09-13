@@ -9,7 +9,7 @@ The YOLO Customer App allows users to design custom ideas with the help of an AI
 ## Features
 User Registration: Allows new users to sign up for the platform. </br>
 User Authentication: Enables login via an IAM solution (e.g., Keycloak) with OAuth 2.0 security. </br>
-Create Recipe Ideas via AI Assistant: Users can input their own ideas or get recipe suggestions from an AI assistant by providing prompts. They can also include dietary restrictions and preferences. </br>
+Create Recipe Ideas via AI Assistant: Users can input their own ideas or get idea suggestions from an AI assistant by providing prompts. They can also include dietary restrictions and preferences. </br>
 Submit Ideas: Customers can submit recipe ideas to request personalized suggestions from chefs. </br>
 View Recipes: Users can view custom recipes submitted by chefs against their ideas. </br>
 Order Recipe: Customers can order one or more selected recipes in their required quantities. </br>
