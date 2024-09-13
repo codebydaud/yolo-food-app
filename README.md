@@ -67,6 +67,11 @@ OAuth 2.0 for secure API access and user authentication.
 
 ![My ideas](https://github.com/user-attachments/assets/6818d4df-4b6e-4750-b1ed-527b09ad53ce)
 
+### Idea Detail Popup
+
+![Idea Popup](https://github.com/user-attachments/assets/b3b82159-bed3-4157-89e5-41d10237d602)
+
+
 ### Recipe List Screen
 
 ![Recipe page for customer](https://github.com/user-attachments/assets/d81bfc86-1c82-424e-a99f-b66053ddc464)
