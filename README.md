@@ -19,17 +19,17 @@ View Recipes: Users can view custom recipes submitted by chefs against their ide
 Order Recipe: Customers can order one or more selected recipes in their required quantities. </br>
 ### Technology Stack
 #### Backend:
-Java Spring Boot (REST API).
-Spring Security for JWT-based authentication and authorization
+* Java Spring Boot (REST API). </br>
+* Spring Security for JWT-based authentication and authorization.
 
 #### Frontend: 
-Vue.js
+* Vue.js
 
 #### Database: 
-MySQL.
+* MySQL.
 
 #### Security:
-OAuth 2.0 for secure API access and user authentication.
+* OAuth 2.0 for secure API access and user authentication.
 
 ## 2. Vendor (Chef) App
 ### Purpose
@@ -37,7 +37,7 @@ The YOLO Vendor (Chef) App allows chefs to create custom recipes based on custom
 
 ### Features
 User Registration: Allows chefs to sign up for the platform. </br>
-User Authentication: Enables login via an IAM solution (e.g., Keycloak). </br>
+User Authentication: Enables login via an IAM solution (Keycloak). </br>
 Display User Interests: Vendors can see a list of customer-submitted ideas, with the latest ideas shown first. </br>
 Create Recipes via AI Assistant: Chefs can input recipes for a selected idea and optionally use AI assistance to generate recipe suggestions. </br>
 Submit Recipes to Customers: Chefs can submit up to three recipes for each idea, which are sent to the requesting customer. </br>
@@ -45,17 +45,17 @@ Receive Orders: Vendors can receive and manage orders, including details like qu
 Update Order Status: Chefs can update the order status (e.g., Processing, Dispatched). </br>
 ### Technology Stack
 #### Backend:
-Java Spring Boot (REST API).
-Spring Security for JWT-based authentication and authorization
+* Java Spring Boot (REST API).
+* Spring Security for JWT-based authentication and authorization.
 
 #### Frontend: 
-Vue.js
+* Vue.js
 
 #### Database: 
-MySQL.
+* MySQL.
 
 #### Security: 
-OAuth 2.0 for secure API access and user authentication.
+* OAuth 2.0 for secure API access and user authentication.
 
 ## Screenshots (Customer App)
 
