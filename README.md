@@ -39,7 +39,6 @@ Submit Recipes to Customers: Chefs can submit up to three recipes for each idea,
 Receive Orders: Vendors can receive and manage orders, including details like quantity and customer address. </br>
 Update Order Status: Chefs can update the order status (e.g., Processing, Dispatched). </br>
 ## Technology Stack
-## Technology Stack
 ### Backend:
 Java Spring Boot (REST API).
 
