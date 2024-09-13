@@ -4,12 +4,15 @@ import ViewIdeas from '@/views/ViewIdeas.vue';
 import ViewOrders from '@/views/ViewOrders.vue';
 import ViewRecipesList from "@/views/ViewRecipesList.vue";
 import ViewRecipeDetails from "@/views/ViewRecipeDetails.vue";
-import UserProfile from '@/views/UserProfile.vue';
 import GenerateRecipe from '@/views/GenerateRecipe.vue';
+import ViewRecipesListDummy from '@/views/ViewRecipesListDummy.vue';
+import Profile from '@/views/Profile.vue';
 const routes = [
   { path: "/", name: "Home", component: Home },
   { path: "/ideas", name: "GenerateIdea", component: ViewIdeas },
   { path: "/recipes", name: "ViewRecipesList", component: ViewRecipesList },
+  { path: "/recipes-", name: "ViewRecipesListDummy", component: ViewRecipesListDummy },
+  { path: '/profile', name: 'Profile', component: Profile },
   {
     path: "/recipe-details/:recipeId",
     name: "ViewRecipeDetails",
@@ -17,14 +20,13 @@ const routes = [
   },
 
   {
-    path: "/generateRecipe/:id",
+    path: "/generateRecipe",
     name: "GenerateRecipe",
     component: GenerateRecipe,
   },
   { path: "/orders", name: "ViewOrders", component: ViewOrders },
 
-  { path: "/userprofile", name: "UserProfile", component: UserProfile },
-  // { path: '/defaultlayout', name: 'DefaultLayout', component: DefaultLayout },
+ 
 ];  
 
 const router = createRouter({

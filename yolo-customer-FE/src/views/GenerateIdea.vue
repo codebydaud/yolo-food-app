@@ -1,10 +1,10 @@
 <script setup>
 import { ref, computed } from "vue";
 import axios from "axios";
-import { API_CONFIG } from "../config.js";
-import { roles } from '../data/roles.js'; 
+// import { API_CONFIG } from "../config.js";
+// import { roles } from '../data/roles.js';
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const title = ref("");
 const description = ref("");
@@ -16,10 +16,17 @@ const userId = ref(parseInt(localStorage.getItem("user-id")));
 
 const isTitleValid = computed(() => title.value.length <= 64);
 const isDescriptionValid = computed(() => description.value.length <= 600);
-const areInterestsValid = computed(() => interests.value.every(i => i.length <= 32));
-const areRestrictionsValid = computed(() => restrictions.value.every(r => r.length <= 32));
-const isInterestEntered = computed(() => interests.value.some(i => i.trim() !== ""));
+const areInterestsValid = computed(() =>
+  interests.value.every((i) => i.length <= 32)
+);
+const areRestrictionsValid = computed(() =>
+  restrictions.value.every((r) => r.length <= 32)
+);
+const isInterestEntered = computed(() =>
+  interests.value.some((i) => i.trim() !== "")
+);
 
+const successMessage = ref("");
 
 const validateInputs = () => {
   if (!isTitleValid.value) {
@@ -27,7 +34,7 @@ const validateInputs = () => {
     return false;
   }
   if (!isDescriptionValid.value) {
-    alert("Description length must be 180 characters or less.");
+    alert("Description length must be 600 characters or less.");
     return false;
   }
   if (!areInterestsValid.value) {
@@ -45,81 +52,67 @@ const validateInputs = () => {
   return true;
 };
 
+const showSuccessMessage = (message) => {
+  successMessage.value = message;
+  setTimeout(() => {
+    successMessage.value = "";
+  }, 3000); // Message disappears after 3 seconds
+};
+
 const generateAIResponse = async () => {
   if (!validateInputs()) return;
 
-  try {
-    const authToken = localStorage.getItem("vue-token");
-    const requestBody = {
-      userId: userId.value,
-      interests: interests.value,
-      dietaryRestrictions: restrictions.value,
-    };
+  // Simulated dummy data for title and description
+  const dummyIdeas = [
+    {
+      title: "Creamy Garlic Parmesan Pasta",
+      description:
+        "A rich and creamy garlic parmesan pasta that is easy to make and incredibly delicious. Perfect for a quick weeknight dinner.",
+    },
+    {
+      title: "Spicy Thai Basil Chicken",
+      description:
+        "A spicy and flavorful Thai basil chicken stir-fry with fresh basil leaves, bell peppers, and a savory sauce. A quick and satisfying meal.",
+    },
+    {
+      title: "Classic Beef Stroganoff",
+      description:
+        "Tender strips of beef simmered in a creamy mushroom sauce, served over egg noodles. A comforting and hearty dish that everyone will love.",
+    },
+  ];
 
-    const response = await axios.post(
-      `${API_CONFIG.baseURL}/ai/generate`,
-      requestBody,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+  // Pick a random idea from the list
+  const randomIdea = dummyIdeas[Math.floor(Math.random() * dummyIdeas.length)];
 
-    description.value = response.data.data.idea.description;
-    showAIPopup.value = true;
+  title.value = randomIdea.title;
+  description.value = randomIdea.description;
 
-  } catch (error) {
-    console.error("Error generating AI response:", error);
-  }
+  // Show the AI popup
+  showAIPopup.value = true;
 };
 
 const saveAsDraft = async () => {
   if (!validateInputs()) return;
 
-  const authToken = localStorage.getItem("vue-token");
-  const requestBody = {
-    title: title.value,
-    description: description.value,
-    interests: interests.value,
-    dietaryRestrictions: restrictions.value,
-    userId: userId.value,
-  };
-
-  try {
-    await axios.post(
-      `${API_CONFIG.baseURL}/users/ideas/create-draft`,
-      requestBody,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    alert("Draft saved successfully.");
-  } catch (error) {
-    console.error("Error saving draft:", error);
-  }
+  // Simulate saving draft with dummy data
+  setTimeout(() => {
+    showSuccessMessage("Draft saved successfully.");
+  }, 500); // Simulate delay for demonstration
 };
 
-const submitIdea = () => {
+const submitIdea = async () => {
   if (!validateInputs()) return;
 
-  console.log("Idea submitted:", {
-    title: title.value,
-    description: description.value,
-    interests: interests.value,
-    restrictions: restrictions.value,
-  });
+  // Simulate submitting idea with dummy data
+  setTimeout(() => {
+    showSuccessMessage("Idea submitted successfully.");
+  }, 500); // Simulate delay for demonstration
 };
 </script>
 
-
 <template>
   <div class="w-full mx-auto p-6">
-    <h2 class="text-2xl font-bold mb-10">Generate Idea</h2>
+    <h2 class="text-2xl font-bold mb-10">Generate Unique Idea</h2>
 
     <form @submit.prevent="submitIdea">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
@@ -214,22 +207,33 @@ const submitIdea = () => {
       </div>
 
       <div class="flex justify-start">
-          <button
-            type="button"
-            @click="saveAsDraft"
-            class="px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 mr-3"
-          >
-            Save as Draft
-          </button>
+        <button
+          type="button"
+          @click="saveAsDraft"
+          class="px-4 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 mr-3"
+        >
+          Save as Draft
+        </button>
 
-          <button
-            type="submit"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          >
-            Submit
-          </button>
-
+        <button
+          type="submit"
+          class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          Submit Idea
+        </button>
       </div>
     </form>
+
+    <!-- Display success message -->
+    <div
+      v-if="successMessage"
+      class="mt-4 p-4 bg-green-100 text-green-800 border border-green-200 rounded"
+    >
+      {{ successMessage }}
+    </div>
   </div>
 </template>
+
+<style scoped>
+/* Add scoped styles if needed */
+</style>

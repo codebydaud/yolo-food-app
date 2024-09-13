@@ -1,59 +1,34 @@
 <template>
-  <div>
-    <h1>Home Page</h1>
-    <ProfileModal
-      :isOpen="showProfileModal"
-      @profile-completed="handleProfileCompleted"
-    />
-   
+  <div class="flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-screen-lg grid grid-cols-3 gap-4 mb-6">
+      <img
+        src="@/assets/images/chef.png"
+        alt="Chef"
+        class="w-full h-auto object-cover rounded-lg shadow-lg max-h-60 md:max-h-80"
+      />
+      <img
+        src="@/assets/images/bowl.png"
+        alt="Bowl"
+        class="w-full h-auto object-cover rounded-lg shadow-lg max-h-60 md:max-h-80"
+      />
+      <img
+        src="@/assets/images/food.png"
+        alt="Food"
+        class="w-full h-auto object-cover rounded-lg shadow-lg max-h-60 md:max-h-80"
+      />
+    </div>
+    <h1 class="mt-4 text-2xl md:text-4xl font-bold text-gray-800 text-center">
+      Welcome to YOLO Customer!
+    </h1>
   </div>
 </template>
 
 <script>
-import ProfileModal from "./ProfileModal.vue";
-import axios from "axios";
-
 export default {
-  components: {
-    ProfileModal
-  },
-  data() {
-    return {
-      showProfileModal: false,
-      showUnallocatedRightsModal: false,
-    };
-  },
-  mounted() {
-    // Check user profile and roles when the component is mounted
-    this.checkUserProfileAndRoles();
-  },
-  methods: {
-    async checkUserProfileAndRoles() {
-      try {
-        const token = localStorage.getItem("vue-token");
-
-        // Fetch user profile completion status
-        const profileResponse = await axios.get(
-          "http://localhost:8081/users/profiles",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        if (profileResponse.data.is_user_profile_completed === false) {
-          this.showProfileModal = true;
-        }
-        
-      } catch (error) {
-        console.error("Error checking user profile and roles:", error);
-      }
-    },
-    handleProfileCompleted() {
-      this.showProfileModal = false;
-      // Additional logic if needed after profile is completed
-    },
-    
-  },
+  // No need for components or data properties
 };
 </script>
+
+<style scoped>
+/* No custom CSS required when using Tailwind CSS */
+</style>

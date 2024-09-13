@@ -59,20 +59,20 @@ export default {
   data() {
     return {
       userProfile: {
-        first_name: 'Muhammad',
-        last_name: 'Daud',
-        contact_number: '123456789',
-        house: '50',
-        street: 'B Block',
-        area: 'Johar Town',
+        first_name: 'Arbaz',
+        last_name: ' Ahmad',
+        contact_number: '1234567890123',
+        house: '123',
+        street: 'Main St',
+        area: 'Model Town',
         city: 'Lahore',
         country: 'Pakistan',
         zip_code: '12345',
         currency_code: 'USD',
       },
       userDetails: {
-        username: 'muhammaddaud',
-        email: 'muhammaddaud@gmail.com',
+        username: 'arbazahmad',
+        email: 'arbazahmad@gmail.com',
       },
     };
   },

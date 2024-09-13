@@ -43,7 +43,6 @@ onBeforeUnmount(() => {
     <div class="flex items-center">
       <i class="pi pi-utensils text-green-500 text-2xl mr-2"></i> 
       <h1 class="block md:hidden text-2xl font-bold text-gray-800">YOLO</h1>
-      <h1 class="hidden md:block text-2xl font-bold text-blue-600 ml-2">On-demand Food Ordering Platform </h1>
 
     </div>
 
@@ -52,7 +51,7 @@ onBeforeUnmount(() => {
       <button class="relative" @click="toggleDropdown">
         <i class="pi pi-user text-gray-600 text-xl md:text-2xl user-button"></i>
         <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-md popup-menu">
-          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+          <router-link to="/profile" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</router-link>
           <a href="#" @click="$logout" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
         </div>
       </button>

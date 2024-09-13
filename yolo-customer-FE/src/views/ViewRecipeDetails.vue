@@ -8,8 +8,7 @@ const recipe = ref({
   description: 'A rich and creamy garlic parmesan pasta that is easy to make and incredibly delicious. Perfect for a quick weeknight dinner.',
   servingSize: 1,
   price: '$5',
-  ideaTitle: 'Creamy Garlic Parmesan Pasta',
-  status: 'Submitted',
+  chefName: 'Arbaz Ahmad',
   createdAt: '2024-09-10',
   images: [localImage] // Use the imported image
 });
@@ -27,14 +26,19 @@ const prevSlide = () => {
 
 // Computed property for current image
 const currentImage = computed(() => recipe.value.images[currentIndex.value]);
+
+// Function to handle Place Order button click
+const placeOrder = () => {
+  alert('Order placed for ' + recipe.value.name);
+};
 </script>
 
 <template>
-  <div class="flex items-center justify-center min-h-screen">
+  <div class="flex items-center justify-center min-h-screen ">
     <div class="relative max-w-full lg:max-w-4xl w-full bg-white shadow-2xl rounded-lg overflow-hidden transition-all duration-300 hover:shadow-3xl">
       
       <!-- Image Section -->
-      <div class="relative w-full h-[20rem] sm:h-[25rem] md:h-[30rem] overflow-hidden rounded-t-lg"> 
+      <div class="relative w-full h-[15rem] sm:h-[20rem] md:h-[25rem] overflow-hidden rounded-t-lg"> 
         <img :src="currentImage" alt="Recipe Image" class="image-fit rounded-t-lg transition-transform duration-300 ease-in-out transform hover:scale-105" />
 
         <!-- Show Buttons Only If More Than One Image -->
@@ -55,9 +59,15 @@ const currentImage = computed(() => recipe.value.images[currentIndex.value]);
           <p class="text-gray-600 text-lg"><strong>Price:</strong> {{ recipe.price }}</p>
         </div>
         <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6 space-y-2">
-          <p class="text-gray-800 text-lg"><strong>Idea Title:</strong> {{ recipe.ideaTitle }}</p>
-          <p class="text-gray-800 text-lg"><strong>Status:</strong> {{ recipe.status }}</p>
+          <p class="text-gray-800 text-lg"><strong>Chef Name:</strong> {{ recipe.chefName }}</p>
           <p class="text-gray-800 text-lg"><strong>Created At:</strong> {{ recipe.createdAt }}</p>
+        </div>
+
+        <!-- Place Order Button -->
+        <div class="flex justify-center">
+          <button @click="placeOrder" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300">
+            Place Order
+          </button>
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@ import ViewOrders from '@/views/ViewOrders.vue';
 import Profile from '@/views/Profile.vue';
 import Error from '@/views/Error.vue';
 import Unauthorized from '@/views/Unauthorized.vue';
+import ViewRecipesList from '@/views/ViewRecipesList.vue';
+import ViewRecipeDetails from '../views/ViewRecipeDetails.vue';
 
 const routes = [
  
@@ -15,6 +17,12 @@ const routes = [
   { path: '/view-orders', name: 'ViewOrders', component: ViewOrders },
   { path: '/profile', name: 'Profile', component: Profile },
   { path: '/error', name: 'Error', component: Error },
+  { path: "/recipes", name: "ViewRecipesList", component: ViewRecipesList },
+  {
+    path: "/recipe-details/:recipeId",
+    name: "ViewRecipeDetails",
+    component: ViewRecipeDetails,
+  },
   { path: '/unauthorized', name: 'Unauthorized', component: Unauthorized }
 ];
 

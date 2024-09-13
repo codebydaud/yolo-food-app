@@ -11,7 +11,7 @@ const isActiveLink = (link) => {
 </script>
 
 <template>
-  <nav class="hidden md:block w-64 bg-blue-600 text-white flex-col p-4 space-y-4 rounded-tr-2xl">
+  <nav class="hidden md:block w-64 bg-blue-600 text-white flex-col p-4 space-y-4">
     <h1 class="block py-2 px-4 text-3xl font-bold text-white mb-8">YOLO</h1>
 
     <!-- Router Links -->
@@ -36,7 +36,7 @@ const isActiveLink = (link) => {
       class="block py-2 px-4 font-semibold rounded"
       :class="isActiveLink('/view-ideas') ? 'bg-white text-black' : 'hover:bg-blue-500 text-white'"
     >
-      View Ideas
+      My Ideas
     </router-link>
 
     <router-link
@@ -44,7 +44,7 @@ const isActiveLink = (link) => {
       class="block py-2 px-4 font-semibold rounded"
       :class="isActiveLink('/view-orders') ? 'bg-white text-black' : 'hover:bg-blue-500 text-white'"
     >
-      View Orders
+      My Orders
     </router-link>
   </nav>
 </template>

@@ -1,65 +1,94 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import axios from "axios";
 import { useRouter } from "vue-router";
 
 // Initialize router
 const router = useRouter();
 
-// Reactive state for recipes
-const recipesTest = ref([]);
+// Dummy recipes data
+const recipesTest = ref([
+  {
+    id: 1,
+    name: "Garlic Pasta",
+    price: "$5",
+    servings: 1,
+    image: new URL('@/assets/images/spaghetti.png', import.meta.url).href, 
+    status: "submitted",
+  },
+
+  {
+    id: 2,
+    name: "Thai Chicken",
+    price: "$10.99",
+    servings: 1,
+    image: new URL('@/assets/images/chicken.png', import.meta.url).href, 
+    status: "draft",
+  },
+
+  {
+    id: 3,
+    name: "Classic Beef",
+    price: "$19.99",
+    servings: 1,
+    image: new URL('@/assets/images/beef.png', import.meta.url).href, 
+    status: "draft",
+  },
+
+  {
+    id: 4,
+    name: "Chicken Biryani",
+    price: "$10.99",
+    servings: 3,
+    image: new URL('@/assets/images/biryani.png', import.meta.url).href, 
+    status: "draft",
+  },
+  {
+    id: 5,
+    name: "Cake",
+    price: "$14.50",
+    servings: 5,
+    image: new URL('@/assets/images/cake.png', import.meta.url).href, 
+    status: "draft",
+  },
+  {
+    id: 6,
+    name: "Fish",
+    price: "$10",
+    servings: 1,
+    image: new URL('@/assets/images/fish.png', import.meta.url).href, 
+    status: "draft",
+  },
+  {
+    id: 7,
+    name: "Zinger Burger",
+    price: "$12.99",
+    servings: 1,
+    image: new URL('@/assets/images/burger.png', import.meta.url).href, 
+    status: "draft",
+  },
+  {
+    id: 8,
+    name: "Pizza",
+    price: "$20",
+    servings: 5,
+    image: new URL('@/assets/images/pizza.png', import.meta.url).href, 
+    status: "draft",
+  },
+]);
+
+// Simulate loading state
 const loading = ref(true);
 const errorMessage = ref("");
-const storedToken = localStorage.getItem("vue-token");
 
 // Optional: Track deletion loading state per recipe
 const deletingRecipes = ref({});
 
-// Fetch recipes on component mount
-onMounted(async () => {
-  if (storedToken) {
-    try {
-      const response = await axios.get(
-        "http://localhost:8082/api/v1/ideas/1/recipes",
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${storedToken}`,
-          },
-        }
-      );
-
-      console.log("API response:", response.data); // Debugging line
-
-      recipesTest.value = response.data.recipes.map((recipe) => ({
-        id: recipe.id,
-        name: recipe.recipe_name,
-        price: `$${(recipe.price / 100).toFixed(2)}`,
-        servings: recipe.serving_size,
-        image:
-          recipe.images.length > 0
-            ? `http://localhost:8085/${recipe.images[0].url.match(/[^\\/]+$/)[0]}`
-            : "", // Check if image URL exists
-        status: recipe.status,
-      }));
-
-      console.log("Processed recipes:", recipesTest.value); // Debugging line
-    } catch (error) {
-      handleError(error);
-    } finally {
-      loading.value = false;
-    }
-  } else {
-    errorMessage.value = "No token found. Please log in.";
+onMounted(() => {
+  // Simulate an API delay before showing the dummy data
+  setTimeout(() => {
     loading.value = false;
-  }
+  }, 1000); // 1 second delay for simulating API response
 });
-
-// Handle API errors
-const handleError = (error) => {
-  console.error("An error occurred:", error);
-  errorMessage.value = "Failed to load recipes. Please try again later.";
-};
 
 // Navigate to recipe details
 const viewDetails = (recipe) => {
@@ -81,37 +110,20 @@ const updateRecipe = (recipe) => {
 
 // Delete a recipe
 const deleteRecipe = async (recipe) => {
-  // Optional: Confirm deletion with the user
   const confirmed = confirm(
     `Are you sure you want to delete the recipe "${recipe.name}"? This action cannot be undone.`
   );
 
   if (!confirmed) return;
 
-  // Set deletion loading state for this recipe
+  // Simulate deletion process with a loading state
   deletingRecipes.value[recipe.id] = true;
 
-  try {
-    await axios.delete(`http://localhost:8082/api/v1/recipes/${recipe.id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${storedToken}`,
-      },
-    });
-
-    // Remove the deleted recipe from the list
+  setTimeout(() => {
     recipesTest.value = recipesTest.value.filter((r) => r.id !== recipe.id);
-
-    alert(`Recipe "${recipe.name}" has been successfully deleted.`);
-  } catch (error) {
-    console.error("Delete error:", error);
-    alert(
-      `Failed to delete the recipe "${recipe.name}". Please try again later.`
-    );
-  } finally {
-    // Reset deletion loading state
     deletingRecipes.value[recipe.id] = false;
-  }
+    alert(`Recipe "${recipe.name}" has been successfully deleted.`);
+  }, 1000); // Simulate a 1-second delay for deletion
 };
 
 // State to track the visibility of the dropdown
