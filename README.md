@@ -23,7 +23,9 @@ The YOLO Customer App allows users to design custom ideas with the help of an AI
 * Spring Security for JWT-based authentication and authorization.
 
 #### Frontend: 
-* Vue.js
+* Vue.js with Tailwind CSS for responsive and modern design. </br>
+* Axios for API calls. </br>
+* Vue Router for routing.
 
 #### Database: 
 * MySQL.
@@ -49,7 +51,9 @@ The YOLO Vendor (Chef) App allows chefs to create custom recipes based on custom
 * Spring Security for JWT-based authentication and authorization.
 
 #### Frontend: 
-* Vue.js
+* Vue.js with Tailwind CSS for responsive and modern design. </br>
+* Axios for API calls. </br>
+* Vue Router for routing.
 
 #### Database: 
 * MySQL.
