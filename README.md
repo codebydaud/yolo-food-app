@@ -88,5 +88,36 @@ OAuth 2.0 for secure API access and user authentication.
 
 ![profile](https://github.com/user-attachments/assets/bd73cbba-67e0-4a39-87c1-ceed8b035e52)
 
+## Screenshots (Chef App)
+
+### Home Screen
+
+![chef home](https://github.com/user-attachments/assets/27f71f8e-d7a0-4a40-b86a-124d0dabc519)
+
+### Customer's Idea List for Chef Screen
+
+![idea list for chef](https://github.com/user-attachments/assets/45d9cfd6-7320-4bca-9d11-7b66c4981620)\
+
+### Generate Recipe Screen
+
+![generate recipe](https://github.com/user-attachments/assets/053f0058-d25f-4237-b5e3-32b964c98153)
+
+### My Recipe List Screen
+
+![all recipes](https://github.com/user-attachments/assets/2450dad6-8baa-4309-bd3d-414c9aaca358)
+
+### Recipe Detail Screen
+
+![recipe detail chef](https://github.com/user-attachments/assets/4f438bcc-73fb-471f-a859-6e58da50c162)
+
+### Orders Screen
+
+![order page chef](https://github.com/user-attachments/assets/09c5b81e-1f6e-4391-9a32-158f58317d2d)
+
+
+
+
+
+
 
 
