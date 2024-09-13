@@ -2,6 +2,10 @@
 ## Overview
 YOLO is a food ordering platform designed to help customers create custom ideas and order custom recipes. With the help of an AI assistant, customers can submit ideas for custom recipes based on their preferences, and vendors (chefs) can generate personalized recipes. The platform supports two apps: Customer App and Vendor (Chef) App.
 
+## VIDEO DEMO
+
+https://github.com/user-attachments/assets/41c11164-2541-4974-930d-b539caa802a7
+
 ## 1. Customer App
 ### Purpose
 The YOLO Customer App allows users to design custom ideas with the help of an AI assistant and order them. Customers can request custom recipes based on their ideas or dietary preferences.
@@ -52,10 +56,6 @@ MySQL.
 
 #### Security: 
 OAuth 2.0 for secure API access and user authentication.
-
-## VIDEO DEMO
-
-https://github.com/user-attachments/assets/41c11164-2541-4974-930d-b539caa802a7
 
 ## Screenshots (Customer App)
 
