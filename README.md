@@ -26,9 +26,9 @@ MySQL.
 ### Security:
 OAuth 2.0 for secure API access and user authentication.
 
-# 2. Vendor App
+# 2. Vendor (Chef) App
 ## Purpose:
-The YOLO Vendor App allows chefs to create custom recipes based on customer ideas. Chefs can submit recipes with relevant details like serving size and price, and receive and manage orders.
+The YOLO Vendor (Chef) App allows chefs to create custom recipes based on customer ideas. Chefs can submit recipes with relevant details like serving size and price, and receive and manage orders.
 
 ## Features:
 User Registration: Allows chefs to sign up for the platform. </br>
