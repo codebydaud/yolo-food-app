@@ -80,40 +80,6 @@ The YOLO Vendor (Chef) App allows chefs to create custom recipes based on custom
 |-----------------------------------------|-----------------------------------------|
 | ![my orders](https://github.com/user-attachments/assets/031a261c-e08c-4541-90d8-f2e9d2038786) | ![profile](https://github.com/user-attachments/assets/bd73cbba-67e0-4a39-87c1-ceed8b035e52) |
 
-
-### Home Screen
-
-![Home](https://github.com/user-attachments/assets/6087b42e-ade6-41cb-9132-7e251bf0a5b2)
-
-### Generate Idea Screen
-
-![Generate IDea with Data](https://github.com/user-attachments/assets/88abdcf7-da99-4ec0-9184-bc818e7977ce)
-
-### My Ideas Screen
-
-![My ideas](https://github.com/user-attachments/assets/6818d4df-4b6e-4750-b1ed-527b09ad53ce)
-
-### Idea Detail Popup
-
-![Idea Popup](https://github.com/user-attachments/assets/b3b82159-bed3-4157-89e5-41d10237d602)
-
-
-### Recipe List Screen
-
-![Recipe page for customer](https://github.com/user-attachments/assets/d81bfc86-1c82-424e-a99f-b66053ddc464)
-
-### Recipe Detail Screen
-
-![recipe detail for customer](https://github.com/user-attachments/assets/8d8ac04c-d1b2-4fb1-8891-82989de243f2)
-
-### My Orders Screen
-
-![my orders](https://github.com/user-attachments/assets/031a261c-e08c-4541-90d8-f2e9d2038786)
-
-### Profile Screen
-
-![profile](https://github.com/user-attachments/assets/bd73cbba-67e0-4a39-87c1-ceed8b035e52)
-
 ## Screenshots (Chef App)
 
 |  Home Screen                              |  Customer's Idea List for Chef Screen                              |
@@ -127,36 +93,3 @@ The YOLO Vendor (Chef) App allows chefs to create custom recipes based on custom
 |  Recipe Detail Screen                              |  Orders Screen                               |
 |-----------------------------------------|-----------------------------------------|
 | ![recipe detail chef](https://github.com/user-attachments/assets/4f438bcc-73fb-471f-a859-6e58da50c162) | ![order page chef](https://github.com/user-attachments/assets/09c5b81e-1f6e-4391-9a32-158f58317d2d) |
-
-
-### Home Screen
-
-![chef home](https://github.com/user-attachments/assets/27f71f8e-d7a0-4a40-b86a-124d0dabc519)
-
-### Customer's Idea List for Chef Screen
-
-![idea list for chef](https://github.com/user-attachments/assets/45d9cfd6-7320-4bca-9d11-7b66c4981620)\
-
-### Generate Recipe Screen
-
-![generate recipe](https://github.com/user-attachments/assets/053f0058-d25f-4237-b5e3-32b964c98153)
-
-### My Recipe List Screen
-
-![all recipes](https://github.com/user-attachments/assets/2450dad6-8baa-4309-bd3d-414c9aaca358)
-
-### Recipe Detail Screen
-
-![recipe detail chef](https://github.com/user-attachments/assets/4f438bcc-73fb-471f-a859-6e58da50c162)
-
-### Orders Screen
-
-![order page chef](https://github.com/user-attachments/assets/09c5b81e-1f6e-4391-9a32-158f58317d2d)
-
-
-
-
-
-
-
-
