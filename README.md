@@ -45,7 +45,7 @@ The YOLO Vendor (Chef) App allows chefs to create custom recipes based on custom
 * MySQL.
 
 ### Security: 
-* OAuth 2.0 for secure API access and user authentication.
+* OAuth 2.0 (Keycloak) for secure API access and user authentication.
 
 ## Screenshots (Customer App)
 
