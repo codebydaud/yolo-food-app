@@ -4,7 +4,8 @@ YOLO is a food ordering platform designed to help customers create custom ideas 
 
 ## VIDEO DEMO
 
-https://github.com/user-attachments/assets/41c11164-2541-4974-930d-b539caa802a7
+https://github.com/user-attachments/assets/f1a45aa2-52bf-42d5-a7cf-e4886ce52dbf
+
 
 ## 1. Customer App
 ### Purpose
