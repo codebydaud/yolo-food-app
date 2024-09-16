@@ -2,7 +2,7 @@
 ## Overview
 YOLO is a food ordering platform designed to help customers create custom ideas and order custom recipes. With the help of an AI assistant, customers can submit ideas for custom recipes based on their preferences, and vendors (chefs) can generate personalized recipes. The platform supports two apps: Customer App and Vendor (Chef) App.
 
-## Vide Demo
+## Video Demo
 
 https://github.com/user-attachments/assets/f1a45aa2-52bf-42d5-a7cf-e4886ce52dbf
 
@@ -18,21 +18,6 @@ The YOLO Customer App allows users to design custom ideas with the help of an AI
 * Submit Ideas: Customers can submit recipe ideas to request personalized suggestions from chefs. </br>
 * View Recipes: Users can view custom recipes submitted by chefs against their ideas. </br>
 * Order Recipe: Customers can order one or more selected recipes in their required quantities. </br>
-### Technology Stack
-#### Frontend: 
-* Vue.js with Tailwind CSS for responsive and modern design. </br>
-* Axios for API calls. </br>
-* Vue Router for routing.
-  
-#### Backend:
-* Java Spring Boot (REST API). </br>
-* Spring Security for JWT-based authentication and authorization.
-
-#### Database: 
-* MySQL.
-
-#### Security:
-* OAuth 2.0 for secure API access and user authentication.
 
 ## 2. Vendor (Chef) App
 ### Purpose
@@ -46,20 +31,20 @@ The YOLO Vendor (Chef) App allows chefs to create custom recipes based on custom
 * Submit Recipes to Customers: Chefs can submit up to three recipes for each idea, which are sent to the requesting customer. </br>
 * Receive Orders: Vendors can receive and manage orders, including details like quantity and customer address. </br>
 * Update Order Status: Chefs can update the order status (e.g., Processing, Dispatched). </br>
-### Technology Stack
-#### Frontend: 
+## Technology Stack
+### Frontend: 
 * Vue.js with Tailwind CSS for responsive and modern design. </br>
 * Axios for API calls. </br>
 * Vue Router for routing.
   
-#### Backend:
+### Backend:
 * Java Spring Boot (REST API).
 * Spring Security for JWT-based authentication and authorization.
 
-#### Database: 
+### Database: 
 * MySQL.
 
-#### Security: 
+### Security: 
 * OAuth 2.0 for secure API access and user authentication.
 
 ## Screenshots (Customer App)
